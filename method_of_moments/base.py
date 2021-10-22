@@ -13,7 +13,7 @@ from pretty_repr import RepresentableObject
 
 class BaseDistribution(RepresentableObject, ABC):
     """
-    Abstract class for probability distributions.
+    Abstract class for probability method_of_moments.
 
     Parameters
     ----------

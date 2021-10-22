@@ -12,7 +12,9 @@ SIAM Journal on Applied Mathematics, Vol. 21, No. 4, 1971, 501-513.
 
 from scipy.special import gamma, factorial
 
-from distributions.continuous.base_continuous import BaseContinuousDistribution
+from method_of_moments.continuous.base_continuous import (
+    BaseContinuousDistribution
+)
 
 
 def get_generalized_negative_binomial_distribution(

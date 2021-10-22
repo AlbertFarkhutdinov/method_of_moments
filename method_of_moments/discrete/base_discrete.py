@@ -7,13 +7,13 @@ for discrete probability distributions initialized with mean and variance.
 
 from abc import abstractmethod
 
-from distributions.base import BaseDistribution
-from errors import NotDefinedError
+from method_of_moments.base import BaseDistribution
+from method_of_moments.errors import NotDefinedError
 
 
 class BaseDiscreteDistribution(BaseDistribution):
     """
-    Abstract class for discrete probability distributions.
+    Abstract class for discrete probability method_of_moments.
 
     Methods
     -------

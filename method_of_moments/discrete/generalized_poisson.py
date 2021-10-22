@@ -14,7 +14,7 @@ from typing import Tuple
 
 from math import exp, lgamma, log
 
-from distributions.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
 
 
 def get_generalized_poisson_distribution(

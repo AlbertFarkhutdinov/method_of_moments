@@ -20,7 +20,7 @@ Article ID 4878442, 13 pages.
 
 from scipy.stats import nbinom
 
-from distributions.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
 
 
 def get_zero_inflated_binomial_distribution(
