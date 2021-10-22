@@ -9,13 +9,13 @@ from abc import abstractmethod
 
 from scipy.integrate import quad
 
-from distributions.base import BaseDistribution
-from errors import NotDefinedError
+from method_of_moments.base import BaseDistribution
+from method_of_moments.errors import NotDefinedError
 
 
 class BaseContinuousDistribution(BaseDistribution):
     """
-    Abstract class for continuous probability distributions.
+    Abstract class for continuous probability method_of_moments.
 
     Methods
     -------
