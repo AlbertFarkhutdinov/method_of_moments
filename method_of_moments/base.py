@@ -22,14 +22,14 @@ class BaseDistribution(RepresentableObject, ABC):
     variance : float, optional
         Variance of random variable.
         If it is None, absolute value of `mean` is used.
-    is_negative_parameters_allowed : bool, optional, default: True
-        Whether are negative parameters allowed.
+    is_negative_mean_allowed : bool, optional, default: True
+        Whether is negative expected value allowed.
 
     Raises
     ------
     ValueError
-        If `mean` or `variance` are negative values,
-        while `is_negative_parameters_allowed` is False.
+        If `mean` is negative while `is_negative_parameters_allowed` is False
+        or `variance` is negative.
 
     """
 
@@ -37,10 +37,10 @@ class BaseDistribution(RepresentableObject, ABC):
             self,
             mean: float,
             variance: Optional[float] = None,
-            is_negative_parameters_allowed: bool = True
+            is_negative_mean_allowed: bool = True
     ) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
-        self.is_negative_parameters_allowed = is_negative_parameters_allowed
+        self.is_negative_mean_allowed = is_negative_mean_allowed
         self.mean = mean
         self.variance = variance
 
@@ -52,7 +52,7 @@ class BaseDistribution(RepresentableObject, ABC):
     @mean.setter
     def mean(self, mean: float) -> None:
         """Property setter for `self.mean`"""
-        if mean < 0 and not self.is_negative_parameters_allowed:
+        if mean < 0 and not self.is_negative_mean_allowed:
             raise ValueError('Mean value cannot be negative.')
         self.__mean = mean
 
@@ -62,9 +62,9 @@ class BaseDistribution(RepresentableObject, ABC):
         return self.__variance
 
     @variance.setter
-    def variance(self, variance: Optional[float] = None,) -> None:
+    def variance(self, variance: Optional[float] = None) -> None:
         """Property setter for `self.variance`"""
         _variance = abs(self.mean) if variance is None else variance
-        if _variance < 0 and not self.is_negative_parameters_allowed:
+        if _variance < 0:
             raise ValueError('Variance value cannot be negative.')
         self.__variance = _variance
