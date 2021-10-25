@@ -13,7 +13,7 @@ Mathematics Magazine, Vol. 81, No. 2, 2008, 127-137.
 
 from scipy.special import binom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscrete
 
 
 def get_quasi_geometric_distribution(
@@ -30,7 +30,7 @@ def get_quasi_geometric_distribution(
     return (1 - value_at_zero) * (1 - depreciation) * depreciation ** (arg - 1)
 
 
-class QGD(BaseDiscreteDistribution):
+class QGD(BaseDiscrete):
     """
     Class for QuasiGeometric Distribution (QGD).
 

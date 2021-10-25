@@ -14,7 +14,7 @@ from typing import Tuple
 
 from math import exp, lgamma, log
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscrete
 
 
 def get_generalized_poisson_distribution(
@@ -33,7 +33,7 @@ def get_generalized_poisson_distribution(
     return 0.0
 
 
-class GPD(BaseDiscreteDistribution):
+class GPD(BaseDiscrete):
     """
     Class for Generalized Poisson Distribution (GPD).
 

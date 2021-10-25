@@ -11,10 +11,10 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.poisson.html
 
 from scipy.stats import poisson
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscrete
 
 
-class Poisson(BaseDiscreteDistribution):
+class Poisson(BaseDiscrete):
     """
     Class for Poisson Distribution.
 

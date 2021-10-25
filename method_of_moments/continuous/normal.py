@@ -11,12 +11,10 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html
 
 from scipy.stats import norm
 
-from method_of_moments.continuous.base_continuous import (
-    BaseContinuousDistribution
-)
+from method_of_moments.continuous.base_continuous import BaseContinuous
 
 
-class Norm(BaseContinuousDistribution):
+class Norm(BaseContinuous):
     """
     Class for Normal (Gauss) Distribution.
 

@@ -11,7 +11,7 @@ from method_of_moments.base import BaseDistribution
 from method_of_moments.errors import NotDefinedError
 
 
-class BaseDiscreteDistribution(BaseDistribution):
+class BaseDiscrete(BaseDistribution):
     """
     Abstract class for discrete probability distribution.
 

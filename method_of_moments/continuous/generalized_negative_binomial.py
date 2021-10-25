@@ -12,9 +12,7 @@ SIAM Journal on Applied Mathematics, Vol. 21, No. 4, 1971, 501-513.
 
 from scipy.special import gamma, factorial
 
-from method_of_moments.continuous.base_continuous import (
-    BaseContinuousDistribution
-)
+from method_of_moments.continuous.base_continuous import BaseContinuous
 
 
 def get_generalized_negative_binomial_distribution(
@@ -40,7 +38,7 @@ def get_generalized_negative_binomial_distribution(
     return gen_nbd
 
 
-class GenNBD(BaseContinuousDistribution):
+class GenNBD(BaseContinuous):
     """
     Class for Generalized Negative Binomial Distribution (GenNBD).
 

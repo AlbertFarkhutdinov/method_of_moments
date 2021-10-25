@@ -11,7 +11,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html
 from math_round_af import get_rounded_number
 from scipy.stats import hypergeom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscrete
 
 
 def get_hyper_geometric_distribution(
@@ -48,7 +48,7 @@ def get_hyper_geometric_distribution(
     )
 
 
-class HGD(BaseDiscreteDistribution):
+class HGD(BaseDiscrete):
     """
     Class for HyperGeometric Distribution (HGD).
 

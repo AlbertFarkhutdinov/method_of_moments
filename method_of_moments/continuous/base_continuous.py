@@ -14,7 +14,7 @@ from method_of_moments.base import BaseDistribution
 from method_of_moments.errors import NotDefinedError
 
 
-class BaseContinuousDistribution(BaseDistribution):
+class BaseContinuous(BaseDistribution):
     """
     Abstract class for continuous probability distribution.
 

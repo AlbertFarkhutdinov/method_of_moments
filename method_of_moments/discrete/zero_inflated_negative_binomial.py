@@ -20,7 +20,7 @@ Article ID 4878442, 13 pages.
 
 from scipy.stats import nbinom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete.base_discrete import BaseDiscrete
 
 
 def get_zero_inflated_binomial_distribution(
@@ -57,7 +57,7 @@ def get_zero_inflated_binomial_distribution(
     return (1 - zeros_probability) * _nbd
 
 
-class ZiNBD(BaseDiscreteDistribution):
+class ZiNBD(BaseDiscrete):
     """
     Class for Zero-Inflated Negative Binomial Distribution (ZiNBD).
 

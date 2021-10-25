@@ -11,12 +11,10 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html
 
 from scipy.stats import beta
 
-from method_of_moments.continuous.base_continuous import (
-    BaseContinuousDistribution
-)
+from method_of_moments.continuous.base_continuous import BaseContinuous
 
 
-class Beta(BaseContinuousDistribution):
+class Beta(BaseContinuous):
     """
     Class for Beta distribution.
 
