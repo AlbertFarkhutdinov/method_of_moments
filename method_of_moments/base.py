@@ -64,7 +64,28 @@ class BaseDistribution(RepresentableObject, ABC):
     @variance.setter
     def variance(self, variance: Optional[float] = None) -> None:
         """Property setter for `self.variance`"""
-        _variance = abs(self.mean) if variance is None else variance
-        if _variance < 0:
-            raise ValueError('Variance value cannot be negative.')
-        self.__variance = _variance
+        try:
+            _var_as_function_of_mean = self._get_var_as_function_of_mean()
+        except ValueError:
+            _var_as_function_of_mean = None
+        if variance is not None and _var_as_function_of_mean is not None:
+            if variance == _var_as_function_of_mean:
+                self.__variance = variance
+            else:
+                raise ValueError('Unacceptable variance.')
+        if variance is not None and _var_as_function_of_mean is None:
+            self.__variance = variance
+        if variance is None and _var_as_function_of_mean is not None:
+            self.__variance = _var_as_function_of_mean
+        if variance is None and _var_as_function_of_mean is None:
+            raise ValueError('Variance is not defined.')
+
+    def _get_var_as_function_of_mean(self) -> Optional[float]:
+        """
+        Return variance of random variable as a function of mean.
+
+        Base implementation returns None.
+        Some inherits, e.g., `Poisson`, require this method to be defined.
+
+        """
+        return None
