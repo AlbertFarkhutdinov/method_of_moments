@@ -84,7 +84,7 @@ class GenNBD(BaseContinuous):
         self.__trials = trials
 
     def pdf(self, arg: int) -> float:
-        """Return GenNBD probability mass function."""
+        """Return probability density function at a given argument."""
         return get_generalized_negative_binomial_distribution(
             arg=arg,
             trials=self.trials,

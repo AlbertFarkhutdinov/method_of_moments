@@ -18,19 +18,19 @@ class BaseDiscrete(BaseDistribution):
     Methods
     -------
     pmf(arg)
-        Return value of probability mass function for a given argument.
+        Return value of probability mass function at a given argument.
     cmf(arg)
-        Return value of cumulative mass function for a given argument.
+        Return value of cumulative mass function at a given argument.
 
     """
 
     @abstractmethod
     def pmf(self, arg: int) -> float:
-        """Return value of probability mass function for a given argument."""
+        """Return value of probability mass function at a given argument."""
         raise NotDefinedError(self)
 
     def cmf(self, arg: int) -> float:
-        """Return value of cumulative mass function for a given argument."""
+        """Return value of cumulative mass function at a given argument."""
         result = 0.0
         for k in range(0, arg):
             result += self.pmf(k)

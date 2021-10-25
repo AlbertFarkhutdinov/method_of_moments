@@ -32,9 +32,9 @@ class Poisson(BaseDiscrete):
         self.lmd = self.mean
 
     def pmf(self, arg: int) -> float:
-        """Return Poisson probability mass function."""
+        """Return probability mass function at a given argument."""
         return poisson.pmf(arg, mu=self.lmd, loc=0)
 
     def cdf(self, arg: int) -> float:
-        """Return Beta cumulative mass function."""
+        """Return cumulative mass function at a given argument."""
         return poisson.cdf(arg, mu=self.lmd, loc=0)

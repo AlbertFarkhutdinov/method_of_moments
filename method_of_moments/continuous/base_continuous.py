@@ -21,22 +21,22 @@ class BaseContinuous(BaseDistribution):
     Methods
     -------
     pdf(arg)
-        Return value of probability density function for a given argument.
+        Return value of probability density function at a given argument.
     cdf(arg)
-        Return value of cumulative density function for a given argument.
+        Return value of cumulative density function at a given argument.
 
     """
 
     @abstractmethod
     def pdf(self, arg: float) -> float:
         """
-        Return value of probability density function for a given argument.
+        Return value of probability density function at a given argument.
 
         """
         raise NotDefinedError(self)
 
     def cdf(self, arg: float, low_limit: Optional[float]) -> float:
-        """Return value of cumulative density function for a given argument."""
+        """Return value of cumulative density function at a given argument."""
         _low_limit = low_limit or (
             -float('inf') if self.is_negative_allowed else 0.0
         )

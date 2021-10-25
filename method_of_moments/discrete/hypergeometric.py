@@ -128,7 +128,7 @@ class HGD(BaseDiscrete):
         self.__population_size = population_size
 
     def pmf(self, arg: int) -> float:
-        """Return GPD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_hyper_geometric_distribution(
             observed_successes=arg,
             successes=self.successes,

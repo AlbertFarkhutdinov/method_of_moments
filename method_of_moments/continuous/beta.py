@@ -54,7 +54,7 @@ class Beta(BaseContinuous):
         self.__max_bin = max_bin
 
     def pdf(self, arg: float) -> float:
-        """Return Beta probability density function."""
+        """Return probability density function at a given argument."""
         return beta.pdf(
             arg,
             a=self.a_param,
@@ -63,7 +63,7 @@ class Beta(BaseContinuous):
         )
 
     def cdf(self, arg: float, low_limit: float = 0.0) -> float:
-        """Return Beta cumulative density function."""
+        """Return cumulative density function at a given argument."""
         return beta.cdf(
             arg,
             a=self.a_param,

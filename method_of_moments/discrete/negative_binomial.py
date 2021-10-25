@@ -35,7 +35,7 @@ class NBD(BaseDiscrete):
         ))
 
     def pmf(self, arg: int) -> float:
-        """Return NBD probability mass function."""
+        """Return probability mass function at a given argument."""
         return nbinom.pmf(
             k=arg,
             n=self.successes,
@@ -43,7 +43,7 @@ class NBD(BaseDiscrete):
         )
 
     def cdf(self, arg: int) -> float:
-        """Return NBD cumulative mass function."""
+        """Return cumulative mass function at a given argument."""
         return nbinom.cdf(
             k=arg,
             n=self.successes,

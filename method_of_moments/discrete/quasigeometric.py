@@ -54,7 +54,7 @@ class QGD(BaseDiscrete):
         self.depreciation = (self.variance - _delta) / _denominator
 
     def pmf(self, arg: int) -> float:
-        """Return QGD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_quasi_geometric_distribution(
             arg=arg,
             value_at_zero=self.value_at_zero,

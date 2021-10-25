@@ -14,7 +14,6 @@ Elderly in China.
 Hindawi. Discrete Dynamics in Nature and Society. Volume 2021.
 Article ID 4878442, 13 pages.
 
-
 """
 
 
@@ -130,7 +129,7 @@ class ZiNBD(BaseDiscrete):
         self.__successes = successes
 
     def pmf(self, arg: int) -> float:
-        """Return QGD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_zero_inflated_binomial_distribution(
             arg=arg,
             successes=self.successes,

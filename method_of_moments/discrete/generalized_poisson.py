@@ -51,7 +51,7 @@ class GPD(BaseDiscrete):
         self.lmd_2 = 1 - _parameter
 
     def pmf(self, arg: int) -> float:
-        """Return GPD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_generalized_poisson_distribution(
             arg=arg,
             lmd_1=self.lmd_1,
@@ -59,5 +59,5 @@ class GPD(BaseDiscrete):
         )
 
     def get_parameters(self) -> Tuple[float, float]:
-        """Return parameters of GPD."""
+        """Return parameters of distribution."""
         return self.lmd_1, self.lmd_2
