@@ -32,6 +32,6 @@ class BaseDiscrete(BaseDistribution):
     def cmf(self, arg: int) -> float:
         """Return value of cumulative mass function at a given argument."""
         result = 0.0
-        for k in range(0, arg):
+        for k in range(0, arg + 1):
             result += self.pmf(k)
         return result
