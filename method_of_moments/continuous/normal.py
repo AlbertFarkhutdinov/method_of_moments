@@ -9,6 +9,8 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html
 """
 
 
+from typing import Tuple
+
 from scipy.stats import norm
 
 from method_of_moments.continuous.base_continuous import BaseContinuous
@@ -31,9 +33,13 @@ class Norm(BaseContinuous):
         self.scale = self.variance ** 0.5
 
     def pdf(self, arg: float) -> float:
-        """Return Gauss probability density function."""
+        """Return probability density function at a given argument."""
         return norm.pdf(arg, loc=self.loc, scale=self.scale)
 
     def cdf(self, arg: float, low_limit=-float('inf')) -> float:
-        """Return Gauss cumulative density function."""
+        """Return cumulative density function at a given argument."""
         return norm.cdf(arg, loc=self.loc, scale=self.scale)
+
+    def get_parameters(self) -> Tuple[float, float]:
+        """Return parameters of distribution."""
+        return self.loc, self.scale
