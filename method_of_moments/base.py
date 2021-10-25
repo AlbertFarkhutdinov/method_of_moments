@@ -13,7 +13,7 @@ from pretty_repr import RepresentableObject
 
 class BaseDistribution(RepresentableObject, ABC):
     """
-    Abstract class for probability method_of_moments.
+    Abstract class for probability distributions.
 
     Parameters
     ----------
@@ -22,7 +22,7 @@ class BaseDistribution(RepresentableObject, ABC):
     variance : float, optional
         Variance of random variable.
         If it is None, absolute value of `mean` is used.
-    is_negative_mean_allowed : bool, optional, default: True
+    is_negative_allowed : bool, optional, default: True
         Whether is negative expected value allowed.
 
     Raises
@@ -37,10 +37,10 @@ class BaseDistribution(RepresentableObject, ABC):
             self,
             mean: float,
             variance: Optional[float] = None,
-            is_negative_mean_allowed: bool = True
+            is_negative_allowed: bool = True
     ) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
-        self.is_negative_mean_allowed = is_negative_mean_allowed
+        self.is_negative_allowed = is_negative_allowed
         self.mean = mean
         self.variance = variance
 
@@ -52,7 +52,7 @@ class BaseDistribution(RepresentableObject, ABC):
     @mean.setter
     def mean(self, mean: float) -> None:
         """Property setter for `self.mean`"""
-        if mean < 0 and not self.is_negative_mean_allowed:
+        if mean < 0 and not self.is_negative_allowed:
             raise ValueError('Mean value cannot be negative.')
         self.__mean = mean
 

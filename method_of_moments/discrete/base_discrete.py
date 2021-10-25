@@ -13,24 +13,24 @@ from method_of_moments.errors import NotDefinedError
 
 class BaseDiscreteDistribution(BaseDistribution):
     """
-    Abstract class for discrete probability method_of_moments.
+    Abstract class for discrete probability distribution.
 
     Methods
     -------
     pmf(arg)
-        Return probability mass function.
+        Return value of probability mass function for a given argument.
     cmf(arg)
-        Return cumulative mass function.
+        Return value of cumulative mass function for a given argument.
 
     """
 
     @abstractmethod
     def pmf(self, arg: int) -> float:
-        """Return probability mass function."""
+        """Return value of probability mass function for a given argument."""
         raise NotDefinedError(self)
 
     def cmf(self, arg: int) -> float:
-        """Return cumulative mass function."""
+        """Return value of cumulative mass function for a given argument."""
         result = 0.0
         for k in range(0, arg):
             result += self.pmf(k)
