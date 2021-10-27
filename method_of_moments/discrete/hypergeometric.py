@@ -11,7 +11,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html
 from math_round_af import get_rounded_number
 from scipy.stats import hypergeom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 def get_hyper_geometric_distribution(
@@ -48,7 +48,7 @@ def get_hyper_geometric_distribution(
     )
 
 
-class HGD(BaseDiscreteDistribution):
+class HGD(BaseDiscrete):
     """
     Class for HyperGeometric Distribution (HGD).
 
@@ -128,7 +128,7 @@ class HGD(BaseDiscreteDistribution):
         self.__population_size = population_size
 
     def pmf(self, arg: int) -> float:
-        """Return GPD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_hyper_geometric_distribution(
             observed_successes=arg,
             successes=self.successes,

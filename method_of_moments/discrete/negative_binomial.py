@@ -12,10 +12,10 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.nbinom.html
 from math_round_af import get_rounded_number
 from scipy.stats import nbinom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
-class NBD(BaseDiscreteDistribution):
+class NBD(BaseDiscrete):
     """
     Class for Negative Binomial Distribution (NBD).
 
@@ -35,7 +35,7 @@ class NBD(BaseDiscreteDistribution):
         ))
 
     def pmf(self, arg: int) -> float:
-        """Return NBD probability mass function."""
+        """Return probability mass function at a given argument."""
         return nbinom.pmf(
             k=arg,
             n=self.successes,
@@ -43,7 +43,7 @@ class NBD(BaseDiscreteDistribution):
         )
 
     def cdf(self, arg: int) -> float:
-        """Return NBD cumulative mass function."""
+        """Return cumulative mass function at a given argument."""
         return nbinom.cdf(
             k=arg,
             n=self.successes,

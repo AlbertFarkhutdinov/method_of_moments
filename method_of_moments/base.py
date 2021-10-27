@@ -13,7 +13,7 @@ from pretty_repr import RepresentableObject
 
 class BaseDistribution(RepresentableObject, ABC):
     """
-    Abstract class for probability method_of_moments.
+    Abstract class for probability distributions.
 
     Parameters
     ----------
@@ -22,7 +22,7 @@ class BaseDistribution(RepresentableObject, ABC):
     variance : float, optional
         Variance of random variable.
         If it is None, absolute value of `mean` is used.
-    is_negative_mean_allowed : bool, optional, default: True
+    is_negative_allowed : bool, optional, default: True
         Whether is negative expected value allowed.
 
     Raises
@@ -37,10 +37,10 @@ class BaseDistribution(RepresentableObject, ABC):
             self,
             mean: float,
             variance: Optional[float] = None,
-            is_negative_mean_allowed: bool = True
+            is_negative_allowed: bool = True
     ) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
-        self.is_negative_mean_allowed = is_negative_mean_allowed
+        self.is_negative_allowed = is_negative_allowed
         self.mean = mean
         self.variance = variance
 
@@ -52,7 +52,7 @@ class BaseDistribution(RepresentableObject, ABC):
     @mean.setter
     def mean(self, mean: float) -> None:
         """Property setter for `self.mean`"""
-        if mean < 0 and not self.is_negative_mean_allowed:
+        if mean < 0 and not self.is_negative_allowed:
             raise ValueError('Mean value cannot be negative.')
         self.__mean = mean
 
@@ -61,10 +61,36 @@ class BaseDistribution(RepresentableObject, ABC):
         """Variance of random variable."""
         return self.__variance
 
+    @property
+    def std(self) -> float:
+        """Standard deviation of random variable."""
+        return self.variance ** 0.5
+
     @variance.setter
     def variance(self, variance: Optional[float] = None) -> None:
         """Property setter for `self.variance`"""
-        _variance = abs(self.mean) if variance is None else variance
-        if _variance < 0:
-            raise ValueError('Variance value cannot be negative.')
-        self.__variance = _variance
+        _var_as_function_of_mean = self._get_var_as_function_of_mean()
+        if variance is not None and _var_as_function_of_mean is not None:
+            if variance == _var_as_function_of_mean:
+                self.__variance = variance
+            else:
+                raise ValueError('Unacceptable variance.')
+        if variance is not None and _var_as_function_of_mean is None:
+            if variance <= 0.0:
+                raise ValueError('Variance must be positive.')
+            self.__variance = variance
+        if variance is None and _var_as_function_of_mean is not None:
+            if _var_as_function_of_mean <= 0.0:
+                raise ValueError('Variance must be positive.')
+            self.__variance = _var_as_function_of_mean
+        if variance is None and _var_as_function_of_mean is None:
+            raise ValueError('Variance is not defined.')
+
+    def _get_var_as_function_of_mean(self) -> Optional[float]:
+        """
+        Return variance of random variable as a function of mean.
+
+        Base implementation returns None.
+        Some inherits, e.g., `Poisson`, require this method to be defined.
+
+        """

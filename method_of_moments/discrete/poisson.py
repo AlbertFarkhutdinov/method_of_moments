@@ -9,32 +9,20 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.poisson.html
 """
 
 
+from typing import Optional
+
 from scipy.stats import poisson
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
-class Poisson(BaseDiscreteDistribution):
-    """
-    Class for Poisson Distribution.
+class Poisson(BaseDiscrete):
+    """Class for Poisson Distribution."""
 
-    Parameters
-    ----------
-    **kwargs : `base.BaseDistribution` properties.
-
-    """
-
-    def __init__(self, **kwargs) -> None:
-        """Initialize self. See help(type(self)) for accurate signature."""
-        super().__init__(**kwargs)
-        if self.mean != self.variance:
-            raise ValueError('Mean is not equal to variance')
-        self.lmd = self.mean
+    def _get_var_as_function_of_mean(self) -> Optional[float]:
+        """Return variance of random variable as a function of mean."""
+        return self.mean
 
     def pmf(self, arg: int) -> float:
-        """Return Poisson probability mass function."""
-        return poisson.pmf(arg, mu=self.lmd, loc=0)
-
-    def cdf(self, arg: int) -> float:
-        """Return Beta cumulative mass function."""
-        return poisson.cdf(arg, mu=self.lmd, loc=0)
+        """Return probability mass function at a given argument."""
+        return poisson.pmf(arg, mu=self.mean)

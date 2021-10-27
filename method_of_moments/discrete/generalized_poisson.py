@@ -14,7 +14,7 @@ from typing import Tuple
 
 from math import exp, lgamma, log
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 def get_generalized_poisson_distribution(
@@ -33,25 +33,21 @@ def get_generalized_poisson_distribution(
     return 0.0
 
 
-class GPD(BaseDiscreteDistribution):
-    """
-    Class for Generalized Poisson Distribution (GPD).
+class GPD(BaseDiscrete):
+    """Class for Generalized Poisson Distribution (GPD)."""
 
-    Parameters
-    ----------
-    **kwargs : `base.BaseDistribution` properties.
+    @property
+    def lmd_1(self):
+        """Return parameter `lmd_1` in GPD."""
+        return self.mean * (self.mean / self.variance) ** 0.5
 
-    """
-
-    def __init__(self, **kwargs) -> None:
-        """Initialize self. See help(type(self)) for accurate signature."""
-        super().__init__(**kwargs)
-        _parameter = (self.mean / self.variance) ** 0.5
-        self.lmd_1 = self.mean * _parameter
-        self.lmd_2 = 1 - _parameter
+    @property
+    def lmd_2(self):
+        """Return parameter `lmd_1` in GPD."""
+        return 1 - (self.mean / self.variance) ** 0.5
 
     def pmf(self, arg: int) -> float:
-        """Return GPD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_generalized_poisson_distribution(
             arg=arg,
             lmd_1=self.lmd_1,
@@ -59,5 +55,5 @@ class GPD(BaseDiscreteDistribution):
         )
 
     def get_parameters(self) -> Tuple[float, float]:
-        """Return parameters of GPD."""
+        """Return parameters of distribution."""
         return self.lmd_1, self.lmd_2

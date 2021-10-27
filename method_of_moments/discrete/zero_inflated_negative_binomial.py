@@ -14,13 +14,12 @@ Elderly in China.
 Hindawi. Discrete Dynamics in Nature and Society. Volume 2021.
 Article ID 4878442, 13 pages.
 
-
 """
 
 
 from scipy.stats import nbinom
 
-from method_of_moments.discrete.base_discrete import BaseDiscreteDistribution
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 def get_zero_inflated_binomial_distribution(
@@ -57,7 +56,7 @@ def get_zero_inflated_binomial_distribution(
     return (1 - zeros_probability) * _nbd
 
 
-class ZiNBD(BaseDiscreteDistribution):
+class ZiNBD(BaseDiscrete):
     """
     Class for Zero-Inflated Negative Binomial Distribution (ZiNBD).
 
@@ -130,7 +129,7 @@ class ZiNBD(BaseDiscreteDistribution):
         self.__successes = successes
 
     def pmf(self, arg: int) -> float:
-        """Return QGD probability mass function."""
+        """Return probability mass function at a given argument."""
         return get_zero_inflated_binomial_distribution(
             arg=arg,
             successes=self.successes,

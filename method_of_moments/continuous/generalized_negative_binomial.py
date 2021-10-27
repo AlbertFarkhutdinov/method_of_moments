@@ -12,9 +12,7 @@ SIAM Journal on Applied Mathematics, Vol. 21, No. 4, 1971, 501-513.
 
 from scipy.special import gamma, factorial
 
-from method_of_moments.continuous.base_continuous import (
-    BaseContinuousDistribution
-)
+from method_of_moments.continuous._base_continuous import BaseContinuous
 
 
 def get_generalized_negative_binomial_distribution(
@@ -40,7 +38,7 @@ def get_generalized_negative_binomial_distribution(
     return gen_nbd
 
 
-class GenNBD(BaseContinuousDistribution):
+class GenNBD(BaseContinuous):
     """
     Class for Generalized Negative Binomial Distribution (GenNBD).
 
@@ -58,8 +56,6 @@ class GenNBD(BaseContinuousDistribution):
         self.trials = trials
         _ratio_1 = self.trials / self.mean
         _ratio_2 = self.variance / self.mean
-        if self.variance <= 0.0:
-            raise ValueError('Variance must be positive value.')
         _parameter = 2 * _ratio_1 ** 2 * _ratio_2
         self.alpha = (
                 ((1.0 + 2.0 * _parameter) ** 0.5 - 1.0) / _parameter
@@ -86,7 +82,7 @@ class GenNBD(BaseContinuousDistribution):
         self.__trials = trials
 
     def pdf(self, arg: int) -> float:
-        """Return GenNBD probability mass function."""
+        """Return probability density function at a given argument."""
         return get_generalized_negative_binomial_distribution(
             arg=arg,
             trials=self.trials,

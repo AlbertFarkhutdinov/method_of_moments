@@ -1,6 +1,9 @@
+"""Module for packaging and distribution Python packages."""
+
+
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", mode="r", encoding='utf8') as fh:
     long_description = fh.read()
 
 requirements = [
