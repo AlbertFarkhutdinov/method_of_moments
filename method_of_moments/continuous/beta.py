@@ -8,6 +8,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html
 
 """
 
+from typing import Tuple
 
 from scipy.stats import beta
 
@@ -28,30 +29,34 @@ class Beta(BaseContinuous):
 
     def __init__(
             self,
-            max_bin: int = 1,
+            loc: float = 0.,
+            scale: float = 1.,
             **kwargs,
     ) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
         super().__init__(**kwargs)
-        self.max_bin = max_bin
-        _factor = self.mean * (1 - self.mean) / self.variance - 1.0
-        self.a_param = _factor * self.mean
-        self.b_param = _factor * (1 - self.mean)
+        self.loc = loc
+        self.scale = scale
+        _mean = (self.mean - loc) / scale
+        _variance = self.variance / scale ** 2
+        _factor = _mean * (1 - _mean) / _variance - 1.0
+        self.a_param = _factor * _mean
+        self.b_param = _factor * (1 - _mean)
 
     @property
-    def max_bin(self) -> int:
+    def scale(self) -> float:
         """The value of `scale` parameter for scipy.stats.beta."""
-        return self.__max_bin
+        return self.__scale
 
-    @max_bin.setter
-    def max_bin(
+    @scale.setter
+    def scale(
             self,
-            max_bin: int = 1,
+            scale: float = 1.,
     ) -> None:
-        """Property setter for `self.max_bin`."""
-        if max_bin < 0:
-            raise ValueError('`max_bin` value must be positive.')
-        self.__max_bin = max_bin
+        """Property setter for `self.scale`."""
+        if scale < 0:
+            raise ValueError('`scale` value must be positive.')
+        self.__scale = scale
 
     def pdf(self, arg: float) -> float:
         """Return probability density function at a given argument."""
@@ -59,14 +64,20 @@ class Beta(BaseContinuous):
             arg,
             a=self.a_param,
             b=self.b_param,
-            scale=self.max_bin,
+            loc=self.loc,
+            scale=self.scale,
         )
 
-    def cdf(self, arg: float, low_limit: float = 0.0) -> float:
+    def cdf(self, arg: float) -> float:
         """Return cumulative density function at a given argument."""
         return beta.cdf(
             arg,
             a=self.a_param,
             b=self.b_param,
-            # scale=self.max_bin,
+            loc=self.loc,
+            scale=self.scale,
         )
+
+    def get_parameters(self) -> Tuple[float, float]:
+        """Return parameters of distribution."""
+        return self.a_param, self.b_param
