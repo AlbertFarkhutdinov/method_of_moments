@@ -6,7 +6,6 @@ for continuous probability distributions initialized with mean and variance.
 
 
 from abc import abstractmethod
-from typing import Optional
 
 from scipy.integrate import quad
 
