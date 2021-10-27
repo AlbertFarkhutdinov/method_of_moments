@@ -34,21 +34,17 @@ def get_generalized_poisson_distribution(
 
 
 class GPD(BaseDiscrete):
-    """
-    Class for Generalized Poisson Distribution (GPD).
+    """Class for Generalized Poisson Distribution (GPD)."""
 
-    Parameters
-    ----------
-    **kwargs : `base.BaseDistribution` properties.
+    @property
+    def lmd_1(self):
+        """Return parameter `lmd_1` in GPD."""
+        return self.mean * (self.mean / self.variance) ** 0.5
 
-    """
-
-    def __init__(self, **kwargs) -> None:
-        """Initialize self. See help(type(self)) for accurate signature."""
-        super().__init__(**kwargs)
-        _parameter = (self.mean / self.variance) ** 0.5
-        self.lmd_1 = self.mean * _parameter
-        self.lmd_2 = 1 - _parameter
+    @property
+    def lmd_2(self):
+        """Return parameter `lmd_1` in GPD."""
+        return 1 - (self.mean / self.variance) ** 0.5
 
     def pmf(self, arg: int) -> float:
         """Return probability mass function at a given argument."""

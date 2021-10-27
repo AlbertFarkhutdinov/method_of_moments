@@ -56,8 +56,6 @@ class GenNBD(BaseContinuous):
         self.trials = trials
         _ratio_1 = self.trials / self.mean
         _ratio_2 = self.variance / self.mean
-        if self.variance <= 0.0:
-            raise ValueError('Variance must be positive value.')
         _parameter = 2 * _ratio_1 ** 2 * _ratio_2
         self.alpha = (
                 ((1.0 + 2.0 * _parameter) ** 0.5 - 1.0) / _parameter

@@ -33,6 +33,10 @@ class Beta(BaseContinuous, LocScale):
         _variance = self.get_standard_variance(self.variance)
         return (_mean * (1 - _mean) / _variance - 1.0) * (1 - _mean)
 
+    def get_parameters(self) -> Tuple[float, float]:
+        """Return parameters of distribution."""
+        return self.a_parameter, self.b_parameter
+
     def pdf(self, arg: float) -> float:
         """Return probability density function at a given argument."""
         return beta.pdf(
@@ -52,7 +56,3 @@ class Beta(BaseContinuous, LocScale):
             loc=self.loc,
             scale=self.scale,
         )
-
-    def get_parameters(self) -> Tuple[float, float]:
-        """Return parameters of distribution."""
-        return self.a_parameter, self.b_parameter

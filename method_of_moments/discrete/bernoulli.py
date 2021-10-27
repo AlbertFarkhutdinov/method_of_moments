@@ -11,20 +11,17 @@ from ._base_discrete import BaseDiscrete
 
 
 class Bernoulli(BaseDiscrete):
-    """
-    Class for Bernoulli Distribution.
+    """Class for Bernoulli Distribution."""
 
-    Parameters
-    ----------
-    **kwargs : `base.BaseDistribution` properties.
+    @property
+    def success_probability(self):
+        """Return probability of success."""
+        return self.mean
 
-    """
-
-    def __init__(self, **kwargs) -> None:
-        """Initialize self. See help(type(self)) for accurate signature."""
-        super().__init__(**kwargs)
-        self.success_probability = self.mean
-        self.failure_probability = 1. - self.mean
+    @property
+    def failure_probability(self):
+        """Return probability of failure."""
+        return 1. - self.mean
 
     def _get_var_as_function_of_mean(self) -> Optional[float]:
         """Return variance of random variable as a function of mean."""

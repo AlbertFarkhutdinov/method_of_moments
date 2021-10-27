@@ -29,7 +29,6 @@ class Poisson(BaseDiscrete):
     def __init__(self, **kwargs) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
         super().__init__(**kwargs)
-        self.lmd = self.mean
 
     def _get_var_as_function_of_mean(self) -> Optional[float]:
         """Return variance of random variable as a function of mean."""
@@ -37,4 +36,4 @@ class Poisson(BaseDiscrete):
 
     def pmf(self, arg: int) -> float:
         """Return probability mass function at a given argument."""
-        return poisson.pmf(arg, mu=self.lmd, loc=0)
+        return poisson.pmf(arg, mu=self.mean)
