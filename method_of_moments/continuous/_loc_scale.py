@@ -5,10 +5,10 @@ from location-scale family.
 """
 
 
-from pretty_repr import RepresentableObject
+from ._base_continuous import BaseContinuous
 
 
-class LocScale(RepresentableObject):
+class LocScale(BaseContinuous):
     """
     Class for probability distributions from location-scale family.
 
@@ -18,6 +18,7 @@ class LocScale(RepresentableObject):
         Location parameter of a probability distribution.
     scale : float, optional, default: 1.0
         Scale parameter of a probability distribution.
+    **kwargs : `base.BaseDistribution` properties.
 
     Methods
     -------
@@ -33,10 +34,9 @@ class LocScale(RepresentableObject):
 
     """
 
-    def __init__(self, loc: float = 0.0, scale: float = 1.0) -> None:
+    def __init__(self, loc: float = 0.0, scale: float = 1.0, **kwargs) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
-        print('loc_scale')
-        super().__init__()
+        super().__init__(**kwargs)
         self.loc = loc
         self.scale = scale
 
