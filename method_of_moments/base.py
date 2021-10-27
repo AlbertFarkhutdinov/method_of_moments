@@ -61,6 +61,11 @@ class BaseDistribution(RepresentableObject, ABC):
         """Variance of random variable."""
         return self.__variance
 
+    @property
+    def std(self) -> float:
+        """Standard deviation of random variable."""
+        return self.variance ** 0.5
+
     @variance.setter
     def variance(self, variance: Optional[float] = None) -> None:
         """Property setter for `self.variance`"""
@@ -71,8 +76,12 @@ class BaseDistribution(RepresentableObject, ABC):
             else:
                 raise ValueError('Unacceptable variance.')
         if variance is not None and _var_as_function_of_mean is None:
+            if variance <= 0.0:
+                raise ValueError('Variance must be positive.')
             self.__variance = variance
         if variance is None and _var_as_function_of_mean is not None:
+            if _var_as_function_of_mean <= 0.0:
+                raise ValueError('Variance must be positive.')
             self.__variance = _var_as_function_of_mean
         if variance is None and _var_as_function_of_mean is None:
             raise ValueError('Variance is not defined.')
