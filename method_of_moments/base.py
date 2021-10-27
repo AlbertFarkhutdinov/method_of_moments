@@ -64,10 +64,7 @@ class BaseDistribution(RepresentableObject, ABC):
     @variance.setter
     def variance(self, variance: Optional[float] = None) -> None:
         """Property setter for `self.variance`"""
-        try:
-            _var_as_function_of_mean = self._get_var_as_function_of_mean()
-        except ValueError:
-            _var_as_function_of_mean = None
+        _var_as_function_of_mean = self._get_var_as_function_of_mean()
         if variance is not None and _var_as_function_of_mean is not None:
             if variance == _var_as_function_of_mean:
                 self.__variance = variance
@@ -88,4 +85,3 @@ class BaseDistribution(RepresentableObject, ABC):
         Some inherits, e.g., `Poisson`, require this method to be defined.
 
         """
-        return None

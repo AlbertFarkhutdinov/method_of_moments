@@ -13,7 +13,7 @@ from typing import Tuple
 
 from scipy.stats import norm
 
-from method_of_moments.continuous._base_continuous import BaseContinuous
+from ._base_continuous import BaseContinuous
 
 
 class Norm(BaseContinuous):
@@ -36,7 +36,7 @@ class Norm(BaseContinuous):
         """Return probability density function at a given argument."""
         return norm.pdf(arg, loc=self.loc, scale=self.scale)
 
-    def cdf(self, arg: float, low_limit=-float('inf')) -> float:
+    def cdf(self, arg: float) -> float:
         """Return cumulative density function at a given argument."""
         return norm.cdf(arg, loc=self.loc, scale=self.scale)
 

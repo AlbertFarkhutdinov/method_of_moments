@@ -13,7 +13,7 @@ from typing import Optional
 
 from scipy.stats import poisson
 
-from method_of_moments.discrete._base_discrete import BaseDiscrete
+from ._base_discrete import BaseDiscrete
 
 
 class Poisson(BaseDiscrete):

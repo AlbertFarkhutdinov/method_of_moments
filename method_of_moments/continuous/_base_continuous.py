@@ -9,8 +9,8 @@ from abc import abstractmethod
 
 from scipy.integrate import quad
 
-from method_of_moments.base import BaseDistribution
-from method_of_moments.errors import NotDefinedError
+from ..base import BaseDistribution
+from ..errors import NotDefinedError
 
 
 class BaseContinuous(BaseDistribution):

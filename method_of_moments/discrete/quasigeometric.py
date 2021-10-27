@@ -13,7 +13,7 @@ Mathematics Magazine, Vol. 81, No. 2, 2008, 127-137.
 
 from scipy.special import binom
 
-from method_of_moments.discrete._base_discrete import BaseDiscrete
+from ._base_discrete import BaseDiscrete
 
 
 def get_quasi_geometric_distribution(

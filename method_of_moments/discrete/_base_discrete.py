@@ -7,8 +7,8 @@ for discrete probability distributions initialized with mean and variance.
 
 from abc import abstractmethod
 
-from method_of_moments.base import BaseDistribution
-from method_of_moments.errors import NotDefinedError
+from ..base import BaseDistribution
+from ..errors import NotDefinedError
 
 
 class BaseDiscrete(BaseDistribution):
