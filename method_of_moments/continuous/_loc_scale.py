@@ -5,7 +5,7 @@ from location-scale family.
 """
 
 
-from ._base_continuous import BaseContinuous
+from method_of_moments.continuous._base_continuous import BaseContinuous
 
 
 class LocScale(BaseContinuous):

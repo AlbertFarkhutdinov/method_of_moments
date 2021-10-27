@@ -12,11 +12,10 @@ from typing import Tuple
 
 from scipy.stats import beta
 
-from ..loc_scale import LocScale
-from ._base_continuous import BaseContinuous
+from method_of_moments.continuous._loc_scale import LocScale
 
 
-class Beta(BaseContinuous, LocScale):
+class Beta(LocScale):
     """Class for Beta distribution."""
 
     @property

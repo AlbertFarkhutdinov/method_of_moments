@@ -7,7 +7,7 @@ for Bernoulli distribution.
 
 from typing import Optional, Tuple
 
-from ._base_discrete import BaseDiscrete
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 class Bernoulli(BaseDiscrete):

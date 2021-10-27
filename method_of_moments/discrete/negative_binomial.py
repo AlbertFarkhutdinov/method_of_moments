@@ -12,7 +12,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.nbinom.html
 from math_round_af import get_rounded_number
 from scipy.stats import nbinom
 
-from ._base_discrete import BaseDiscrete
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 class NBD(BaseDiscrete):

@@ -5,12 +5,10 @@ for continuous probability distributions initialized with mean and variance.
 """
 
 
-from abc import abstractmethod
-
 from scipy.integrate import quad
 
-from ..base import BaseDistribution
-from ..errors import NotDefinedError
+from method_of_moments.base import BaseDistribution
+from method_of_moments.errors import NotDefinedError
 
 
 class BaseContinuous(BaseDistribution):
@@ -31,12 +29,8 @@ class BaseContinuous(BaseDistribution):
         """Return the lower limit of the integral in CDF calculation."""
         return -float('inf') if self.is_negative_allowed else 0.0
 
-    @abstractmethod
     def pdf(self, arg: float) -> float:
-        """
-        Return value of probability density function at a given argument.
-
-        """
+        """Return value of probability density function at a given argument."""
         raise NotDefinedError(self)
 
     def cdf(self, arg: float) -> float:

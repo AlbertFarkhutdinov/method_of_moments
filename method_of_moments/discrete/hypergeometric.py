@@ -11,7 +11,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html
 from math_round_af import get_rounded_number
 from scipy.stats import hypergeom
 
-from ._base_discrete import BaseDiscrete
+from method_of_moments.discrete._base_discrete import BaseDiscrete
 
 
 def get_hyper_geometric_distribution(
