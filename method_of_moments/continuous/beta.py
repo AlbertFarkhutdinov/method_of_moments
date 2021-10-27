@@ -11,7 +11,7 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html
 
 from scipy.stats import beta
 
-from method_of_moments.continuous.base_continuous import BaseContinuous
+from method_of_moments.continuous._base_continuous import BaseContinuous
 
 
 class Beta(BaseContinuous):
