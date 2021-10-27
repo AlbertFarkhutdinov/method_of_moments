@@ -35,6 +35,8 @@ class LocScale(RepresentableObject):
 
     def __init__(self, loc: float = 0.0, scale: float = 1.0) -> None:
         """Initialize self. See help(type(self)) for accurate signature."""
+        print('loc_scale')
+        super().__init__()
         self.loc = loc
         self.scale = scale
 
