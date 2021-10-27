@@ -8,6 +8,7 @@ with a specified mean values and variances.
 from method_of_moments.continuous.beta import Beta
 from method_of_moments.continuous.generalized_negative_binomial import GenNBD
 from method_of_moments.continuous.normal import Norm
+from method_of_moments.discrete.bernoulli import Bernoulli
 from method_of_moments.discrete.generalized_poisson import GPD
 from method_of_moments.discrete.hypergeometric import HGD
 from method_of_moments.discrete.negative_binomial import NBD
