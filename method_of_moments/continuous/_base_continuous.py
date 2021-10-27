@@ -27,6 +27,11 @@ class BaseContinuous(BaseDistribution):
 
     """
 
+    @property
+    def default_lower_limit(self):
+        """Return the lower limit of the integral in CDF calculation."""
+        return -float('inf') if self.is_negative_allowed else 0.0
+
     @abstractmethod
     def pdf(self, arg: float) -> float:
         """
@@ -35,9 +40,6 @@ class BaseContinuous(BaseDistribution):
         """
         raise NotDefinedError(self)
 
-    def cdf(self, arg: float, low_limit: Optional[float]) -> float:
+    def cdf(self, arg: float) -> float:
         """Return value of cumulative density function at a given argument."""
-        _low_limit = low_limit or (
-            -float('inf') if self.is_negative_allowed else 0.0
-        )
-        return quad(func=self.pdf, a=_low_limit, b=arg)[0]
+        return quad(func=self.pdf, a=self.default_lower_limit, b=arg)[0]
