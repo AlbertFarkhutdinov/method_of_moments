@@ -17,18 +17,7 @@ from ._base_discrete import BaseDiscrete
 
 
 class Poisson(BaseDiscrete):
-    """
-    Class for Poisson Distribution.
-
-    Parameters
-    ----------
-    **kwargs : `base.BaseDistribution` properties.
-
-    """
-
-    def __init__(self, **kwargs) -> None:
-        """Initialize self. See help(type(self)) for accurate signature."""
-        super().__init__(**kwargs)
+    """Class for Poisson Distribution."""
 
     def _get_var_as_function_of_mean(self) -> Optional[float]:
         """Return variance of random variable as a function of mean."""
