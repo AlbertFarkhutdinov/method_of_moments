@@ -8,14 +8,16 @@ with open("README.md", mode="r", encoding='utf8') as fh:
 
 requirements = [
     "math_round_af==1.0.2",
+    "numpy==1.21.4",
     "pretty-repr==1.0.1",
     "pylint-af==1.0.1",
-    "scipy==1.7.1",
+    "pytest==6.2.5",
+    "scipy==1.7.3",
 ]
 
 setuptools.setup(
     name="method_of_moments",
-    version="0.0.1",
+    version="0.1.0",
     author="Albert Farkhutdinov",
     author_email="albertfarhutdinov@gmail.com",
     description=(
@@ -28,7 +30,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=requirements,
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
